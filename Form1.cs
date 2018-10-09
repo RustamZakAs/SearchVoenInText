@@ -20,6 +20,9 @@ namespace SearchVoenInText
         private void button1_Click(object sender, EventArgs e)
         {
             int strNumLen = Convert.ToInt32(numericUpDownLen.Value);
+            progressBar.Minimum = 0;
+            progressBar.Maximum = rtbText.Text.Length;
+            progressBar.Value = 0;
             StringBuilder sb = new StringBuilder(strNumLen);
             for (int i = 0; i < rtbText.Text.Length; i++)
             {
@@ -30,9 +33,10 @@ namespace SearchVoenInText
                 else if (sb.Length == strNumLen)
                 {
                     rtbVoen.Text += sb.ToString() + "\n";
-                    sb = new StringBuilder(strNumLen);
+                    Clear(sb);
                 }
-                else if (sb.Length > 0) sb = new StringBuilder(strNumLen);
+                else if (sb.Length > 0) Clear(sb);
+                progressBar.Value += 1; 
             }
         }
 
@@ -42,6 +46,12 @@ namespace SearchVoenInText
                 if (Char.IsNumber(c))
                     return true;
             return false;
+        }
+
+        public static void Clear(StringBuilder value)
+        {
+            value.Length = 0;
+            value.Capacity = 0;
         }
     }
 }
