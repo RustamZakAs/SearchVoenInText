@@ -33,6 +33,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDownLen = new System.Windows.Forms.NumericUpDown();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.labelTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,11 +78,21 @@
             this.progressBar.Step = 1;
             this.progressBar.TabIndex = 4;
             // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Location = new System.Drawing.Point(259, 207);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(49, 13);
+            this.labelTime.TabIndex = 5;
+            this.labelTime.Text = "00:00:00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 298);
+            this.Controls.Add(this.labelTime);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.numericUpDownLen);
             this.Controls.Add(this.button1);
@@ -91,6 +102,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLen)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,6 +113,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown numericUpDownLen;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label labelTime;
     }
 }
 
