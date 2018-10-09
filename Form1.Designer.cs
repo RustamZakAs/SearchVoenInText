@@ -99,7 +99,7 @@
             this.Controls.Add(this.rtbVoen);
             this.Controls.Add(this.rtbText);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Find in text number by lenght";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
