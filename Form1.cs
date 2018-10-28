@@ -39,7 +39,7 @@ namespace SearchVoenInText
                     Clear(sb);
                 }
                 else if (sb.Length > 0) Clear(sb);
-                progressBar.Value += 1; 
+                progressBar.Value += 1;
             }
             DateTime endTime = DateTime.Now;
             double time = (endTime - startTime).TotalSeconds;
@@ -76,6 +76,17 @@ namespace SearchVoenInText
             return time.ToString();
         }
 
+        private int CountCharA()
+        {
+            int count = 0;
+            string str = this.rtbText.ToString();
+            for (int i = 0; i < str.Length; i++)
+            {
+                count++;
+            }
+            return count;
+        }
+
         private int[] CountChar()
         {
             int countDigit = 0;
@@ -92,26 +103,29 @@ namespace SearchVoenInText
                     countSymbol++;
                 }
             }
-            //Thread.Sleep(5000);
-            int[] vs = new int[2];
-            vs[0] = countDigit;
-            vs[1] = countSymbol;
-            return vs;
+            Thread.Sleep(5000);
+            int[] counts = new int[2];
+            counts[0] = countDigit;
+            counts[1] = countSymbol;
+            return counts;
         }
 
-        private void rtbText_TextChanged(object sender, EventArgs e)
+        private async void rtbText_TextChanged(object sender, EventArgs e)
         {
-            //Task<int> task = new Task<int>(CountChar);
-            //task.Start();
+            Task<int> task = new Task<int>(CountCharA);
+            task.Start();
 
             labelCount.Text = "Process...";
-            //int count = await task;
+            int count = await task;
+            /*
             int[] count = CountChar();
             labelCount.Text = "Char: " + rtbText.Text.Length;
             labelCount.Text += "\n";
             labelCount.Text += "Digit: "+ count[0].ToString();
             labelCount.Text += "\n";
             labelCount.Text += "Symbol: "+ count[1].ToString();
+            */
+            labelCount.Text = "Char: " + count.ToString();
         }
     }
 }
