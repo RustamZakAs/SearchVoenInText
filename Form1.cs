@@ -107,8 +107,10 @@ namespace SearchVoenInText
             labelCount.Text = "Process...";
             //int count = await task;
             int[] count = CountChar();
-            labelCount.Text  = "Digit: "+ count[0].ToString();
-            labelCount.Text  += "\n";
+            labelCount.Text = "Char: " + rtbText.Text.Length;
+            labelCount.Text += "\n";
+            labelCount.Text += "Digit: "+ count[0].ToString();
+            labelCount.Text += "\n";
             labelCount.Text += "Symbol: "+ count[1].ToString();
         }
     }
