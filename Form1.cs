@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Text;
+using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace SearchVoenInText
@@ -72,6 +74,42 @@ namespace SearchVoenInText
             if (seconds < 10) time.Append("0" + (seconds).ToString());
             else time.Append((seconds).ToString());
             return time.ToString();
+        }
+
+        private int[] CountChar()
+        {
+            int countDigit = 0;
+            int countSymbol = 0;
+            string str = rtbText.Text;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (Char.IsDigit(str[i]))
+                {
+                    countDigit++;
+                }
+                else if (Char.IsSymbol(str[i]))
+                {
+                    countSymbol++;
+                }
+            }
+            //Thread.Sleep(5000);
+            int[] vs = new int[2];
+            vs[0] = countDigit;
+            vs[1] = countSymbol;
+            return vs;
+        }
+
+        private void rtbText_TextChanged(object sender, EventArgs e)
+        {
+            //Task<int> task = new Task<int>(CountChar);
+            //task.Start();
+
+            labelCount.Text = "Process...";
+            //int count = await task;
+            int[] count = CountChar();
+            labelCount.Text  = "Digit: "+ count[0].ToString();
+            labelCount.Text  += "\n";
+            labelCount.Text += "Symbol: "+ count[1].ToString();
         }
     }
 }
