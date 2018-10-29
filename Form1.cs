@@ -112,20 +112,22 @@ namespace SearchVoenInText
 
         private async void rtbText_TextChanged(object sender, EventArgs e)
         {
+            /*
             Task<int> task = new Task<int>(CountCharA);
             task.Start();
 
             labelCount.Text = "Process...";
             int count = await task;
-            /*
+
+            labelCount.Text = "Char: " + count.ToString();
+            */
+            
             int[] count = CountChar();
             labelCount.Text = "Char: " + rtbText.Text.Length;
             labelCount.Text += "\n";
             labelCount.Text += "Digit: "+ count[0].ToString();
             labelCount.Text += "\n";
             labelCount.Text += "Symbol: "+ count[1].ToString();
-            */
-            labelCount.Text = "Char: " + count.ToString();
         }
     }
 }
