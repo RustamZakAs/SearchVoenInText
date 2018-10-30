@@ -26,19 +26,41 @@ namespace SearchVoenInText
             progressBar.Minimum = 0;
             progressBar.Maximum = rtbText.Text.Length;
             progressBar.Value = 0;
-            StringBuilder sb = new StringBuilder(strNumLen);
+            StringBuilder sbVoen = new StringBuilder(strNumLen);
+            bool isVoenFind = false;
+            bool isCurrency = false;
             for (int i = 0; i < rtbText.Text.Length; i++)
             {
-                if (IsNumberContains(rtbText.Text[i].ToString()))
+                if (!isVoenFind)
                 {
-                    sb.Append(rtbText.Text[i].ToString());
+                    if (IsNumberContains((char)rtbText.Text[i]))
+                    {
+                        sbVoen.Append(rtbText.Text[i].ToString());
+                    }
+                    else if (sbVoen.Length == strNumLen)
+                    {
+                        rtbInfo.Text += sbVoen.ToString() + "|";
+                        isVoenFind = true;
+                        Clear(sbVoen);
+                    }
+                    else if (sbVoen.Length > 0) Clear(sbVoen);
                 }
-                else if (sb.Length == strNumLen)
+                if (isVoenFind)
                 {
-                    rtbVoen.Text += sb.ToString() + "\n";
-                    Clear(sb);
+                    if (IsNumberOrPointContains((char)rtbText.Text[i]))
+                    {
+                        sbVoen.Append(rtbText.Text[i].ToString());
+                        isCurrency = true;
+                    }
+                    else if (rtbText.Text[i].ToString() == " " & isCurrency)
+                    {
+                        rtbInfo.Text += sbVoen.ToString() + "|\n";
+                        isVoenFind = false;
+                        isCurrency = false;
+                        Clear(sbVoen);
+                    }
+                    else if (sbVoen.Length > 0) Clear(sbVoen);
                 }
-                else if (sb.Length > 0) Clear(sb);
                 progressBar.Value += 1;
             }
             DateTime endTime = DateTime.Now;
@@ -46,11 +68,21 @@ namespace SearchVoenInText
             labelTime.Text = TimeToSrting((int)time);
         }
 
-        static bool IsNumberContains(string input)
+        static bool IsNumberContains(char input)
         {
-            foreach (char c in input)
-                if (Char.IsNumber(c))
-                    return true;
+            //foreach (char c in input)
+            //if (Char.IsNumber(c))
+            if (Char.IsNumber(input))
+                return true;
+            return false;
+        }
+
+        static bool IsNumberOrPointContains(char input)
+        {
+            //foreach (char c in input)
+            //if (Char.IsNumber(c) || c == '.')
+            if (Char.IsNumber(input) || input == '.')
+                return true;
             return false;
         }
 
@@ -103,14 +135,14 @@ namespace SearchVoenInText
                     countSymbol++;
                 }
             }
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
             int[] counts = new int[2];
             counts[0] = countDigit;
             counts[1] = countSymbol;
             return counts;
         }
 
-        private async void rtbText_TextChanged(object sender, EventArgs e)
+        private /*async*/ void rtbText_TextChanged(object sender, EventArgs e)
         {
             /*
             Task<int> task = new Task<int>(CountCharA);
@@ -121,13 +153,14 @@ namespace SearchVoenInText
 
             labelCount.Text = "Char: " + count.ToString();
             */
-            
+            /*
             int[] count = CountChar();
             labelCount.Text = "Char: " + rtbText.Text.Length;
             labelCount.Text += "\n";
             labelCount.Text += "Digit: "+ count[0].ToString();
             labelCount.Text += "\n";
             labelCount.Text += "Symbol: "+ count[1].ToString();
+            */
         }
     }
 }

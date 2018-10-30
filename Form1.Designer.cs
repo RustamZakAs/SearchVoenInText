@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.rtbText = new System.Windows.Forms.RichTextBox();
-            this.rtbVoen = new System.Windows.Forms.RichTextBox();
+            this.rtbInfo = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.numericUpDownLen = new System.Windows.Forms.NumericUpDown();
             this.progressBar = new System.Windows.Forms.ProgressBar();
@@ -48,13 +48,13 @@
             this.rtbText.Text = "";
             this.rtbText.TextChanged += new System.EventHandler(this.rtbText_TextChanged);
             // 
-            // rtbVoen
+            // rtbInfo
             // 
-            this.rtbVoen.Location = new System.Drawing.Point(336, -2);
-            this.rtbVoen.Name = "rtbVoen";
-            this.rtbVoen.Size = new System.Drawing.Size(229, 289);
-            this.rtbVoen.TabIndex = 1;
-            this.rtbVoen.Text = "";
+            this.rtbInfo.Location = new System.Drawing.Point(336, -2);
+            this.rtbInfo.Name = "rtbInfo";
+            this.rtbInfo.Size = new System.Drawing.Size(229, 289);
+            this.rtbInfo.TabIndex = 1;
+            this.rtbInfo.Text = "";
             // 
             // button1
             // 
@@ -96,7 +96,7 @@
             this.labelCount.Name = "labelCount";
             this.labelCount.Size = new System.Drawing.Size(71, 48);
             this.labelCount.TabIndex = 6;
-            this.labelCount.Text = "Char: 0";
+            this.labelCount.Text = "Process...";
             // 
             // Form1
             // 
@@ -108,7 +108,7 @@
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.numericUpDownLen);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.rtbVoen);
+            this.Controls.Add(this.rtbInfo);
             this.Controls.Add(this.rtbText);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -122,7 +122,7 @@
         #endregion
 
         private System.Windows.Forms.RichTextBox rtbText;
-        private System.Windows.Forms.RichTextBox rtbVoen;
+        private System.Windows.Forms.RichTextBox rtbInfo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown numericUpDownLen;
         private System.Windows.Forms.ProgressBar progressBar;
