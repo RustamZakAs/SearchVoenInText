@@ -13,6 +13,7 @@ namespace SearchVoenInText
 {
     public partial class Form1 : Form
     {
+        public string str { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -111,7 +112,7 @@ namespace SearchVoenInText
         private int CountCharA()
         {
             int count = 0;
-            string str = this.rtbText.ToString();
+            //string str = this.rtbText.Text;
             for (int i = 0; i < str.Length; i++)
             {
                 count++;
@@ -123,7 +124,7 @@ namespace SearchVoenInText
         {
             int countDigit = 0;
             int countSymbol = 0;
-            string str = rtbText.Text;
+            //string str = rtbText.Text;
             for (int i = 0; i < str.Length; i++)
             {
                 if (Char.IsDigit(str[i]))
@@ -142,8 +143,10 @@ namespace SearchVoenInText
             return counts;
         }
 
-        private /*async*/ void rtbText_TextChanged(object sender, EventArgs e)
+        private void rtbText_TextChanged(object sender, EventArgs e)
         {
+            str = this.rtbText.Text;
+            TextChangedFunction();
             /*
             Task<int> task = new Task<int>(CountCharA);
             task.Start();
@@ -161,6 +164,17 @@ namespace SearchVoenInText
             labelCount.Text += "\n";
             labelCount.Text += "Symbol: "+ count[1].ToString();
             */
+        }
+
+        private async void TextChangedFunction()
+        {
+            Task<int> task = new Task<int>(CountCharA);
+            task.Start(TaskScheduler.Default);
+
+            labelCount.Text = "Process...";
+            int count = await task;
+
+            labelCount.Text = "Char: " + count.ToString();
         }
     }
 }
