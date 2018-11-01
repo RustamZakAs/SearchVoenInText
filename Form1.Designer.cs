@@ -110,7 +110,11 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.rtbInfo);
             this.Controls.Add(this.rtbText);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.MaximumSize = new System.Drawing.Size(580, 336);
+            this.MinimumSize = new System.Drawing.Size(580, 336);
             this.Name = "Form1";
             this.Text = "Find in text number by lenght";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLen)).EndInit();
