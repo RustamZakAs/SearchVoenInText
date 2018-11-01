@@ -24,43 +24,56 @@ namespace SearchVoenInText
         {
             DateTime startTime = DateTime.Now;
             int strNumLen = Convert.ToInt32(numericUpDownLen.Value);
+            str = rtbText.Text;
             progressBar.Minimum = 0;
-            progressBar.Maximum = rtbText.Text.Length;
+            progressBar.Maximum = str.Length;
             progressBar.Value = 0;
-            StringBuilder sbVoen = new StringBuilder(strNumLen);
+            StringBuilder sbInfo = new StringBuilder(strNumLen);
             bool isVoenFind = false;
             bool isCurrency = false;
-            for (int i = 0; i < rtbText.Text.Length; i++)
+            for (int i = 0; i < str.Length; i++)
             {
                 if (!isVoenFind)
                 {
-                    if (IsNumberContains((char)rtbText.Text[i]))
+                    if (Char.IsNumber((char)str[i]))
                     {
-                        sbVoen.Append(rtbText.Text[i].ToString());
+                        sbInfo.Append((char)str[i]);
                     }
-                    else if (sbVoen.Length == strNumLen)
+                    else if (sbInfo.Length == strNumLen)
                     {
-                        rtbInfo.Text += sbVoen.ToString() + "|";
+                        rtbInfo.Text += sbInfo.ToString() + "|";
                         isVoenFind = true;
-                        Clear(sbVoen);
+                        sbInfo.Length = 0;
+                        sbInfo.Capacity = 0;
                     }
-                    else if (sbVoen.Length > 0) Clear(sbVoen);
+                    else if (sbInfo.Length > 0)
+                    {
+                        sbInfo.Length = 0;
+                        sbInfo.Capacity = 0;
+                    }
                 }
                 if (isVoenFind)
                 {
-                    if (IsNumberOrPointContains((char)rtbText.Text[i]))
+                    if (Char.IsNumber((char)str[i]) || str[i] == '.')
                     {
-                        sbVoen.Append(rtbText.Text[i].ToString());
+                        sbInfo.Append((char)str[i]);
                         isCurrency = true;
                     }
-                    else if (rtbText.Text[i].ToString() == " " & isCurrency)
+                    else if ((char)str[i] == ' ' & isCurrency)
                     {
-                        rtbInfo.Text += sbVoen.ToString() + "|\n";
+                        rtbInfo.Text += sbInfo.ToString() + "|\n";
+
                         isVoenFind = false;
                         isCurrency = false;
-                        Clear(sbVoen);
+
+                        sbInfo.Length = 0;
+                        sbInfo.Capacity = 0;
                     }
-                    else if (sbVoen.Length > 0) Clear(sbVoen);
+                    else if (sbInfo.Length > 0)
+                    {
+                        sbInfo.Length = 0;
+                        sbInfo.Capacity = 0;
+                    }
                 }
                 progressBar.Value += 1;
             }
@@ -143,7 +156,7 @@ namespace SearchVoenInText
             return counts;
         }
 
-        private void rtbText_TextChanged(object sender, EventArgs e)
+        private async void rtbText_TextChanged(object sender, EventArgs e)
         {
             str = this.rtbText.Text;
             TextChangedFunction();
