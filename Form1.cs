@@ -24,9 +24,8 @@ namespace SearchVoenInText
         {
             DateTime startTime = DateTime.Now;
             int strNumLen = Convert.ToInt32(numericUpDownLen.Value);
-            str = rtbText.Text;
             progressBar.Minimum = 0;
-            progressBar.Maximum = str.Length;
+            progressBar.Maximum = str.Length/10+1;
             progressBar.Value = 0;
             StringBuilder sbInfo = new StringBuilder(strNumLen);
             bool isVoenFind = false;
@@ -43,39 +42,36 @@ namespace SearchVoenInText
                     {
                         rtbInfo.Text += sbInfo.ToString() + "|";
                         isVoenFind = true;
-                        sbInfo.Length = 0;
-                        sbInfo.Capacity = 0;
+
+                        Clear(sbInfo);
                     }
                     else if (sbInfo.Length > 0)
                     {
-                        sbInfo.Length = 0;
-                        sbInfo.Capacity = 0;
+                        Clear(sbInfo);
                     }
                 }
-                if (isVoenFind)
+                if (checkBoxCurrency.Checked && isVoenFind)
                 {
                     if (Char.IsNumber((char)str[i]) || str[i] == '.')
                     {
                         sbInfo.Append((char)str[i]);
                         isCurrency = true;
                     }
-                    else if ((char)str[i] == ' ' & isCurrency)
+                    else if ((char)str[i] == ' ' && isCurrency)
                     {
                         rtbInfo.Text += sbInfo.ToString() + "|\n";
 
                         isVoenFind = false;
                         isCurrency = false;
 
-                        sbInfo.Length = 0;
-                        sbInfo.Capacity = 0;
+                        Clear(sbInfo);
                     }
                     else if (sbInfo.Length > 0)
                     {
-                        sbInfo.Length = 0;
-                        sbInfo.Capacity = 0;
+                        Clear(sbInfo);
                     }
                 }
-                progressBar.Value += 1;
+                if (i%10 == 0) progressBar.Value += 1;
             }
             DateTime endTime = DateTime.Now;
             double time = (endTime - startTime).TotalSeconds;
