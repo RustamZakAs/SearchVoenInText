@@ -51,9 +51,9 @@
             // 
             // rtbInfo
             // 
-            this.rtbInfo.Location = new System.Drawing.Point(336, -2);
+            this.rtbInfo.Location = new System.Drawing.Point(356, -2);
             this.rtbInfo.Name = "rtbInfo";
-            this.rtbInfo.Size = new System.Drawing.Size(229, 289);
+            this.rtbInfo.Size = new System.Drawing.Size(209, 289);
             this.rtbInfo.TabIndex = 1;
             this.rtbInfo.Text = "";
             // 
@@ -71,7 +71,7 @@
             // 
             this.numericUpDownLen.Location = new System.Drawing.Point(262, 12);
             this.numericUpDownLen.Name = "numericUpDownLen";
-            this.numericUpDownLen.Size = new System.Drawing.Size(67, 20);
+            this.numericUpDownLen.Size = new System.Drawing.Size(88, 20);
             this.numericUpDownLen.TabIndex = 3;
             // 
             // progressBar
@@ -85,7 +85,7 @@
             // labelTime
             // 
             this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(272, 221);
+            this.labelTime.Location = new System.Drawing.Point(272, 225);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(49, 13);
             this.labelTime.TabIndex = 5;
@@ -93,9 +93,9 @@
             // 
             // labelCount
             // 
-            this.labelCount.Location = new System.Drawing.Point(259, 138);
+            this.labelCount.Location = new System.Drawing.Point(261, 57);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(71, 48);
+            this.labelCount.Size = new System.Drawing.Size(91, 164);
             this.labelCount.TabIndex = 6;
             this.labelCount.Text = "Process...";
             // 
