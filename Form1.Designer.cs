@@ -37,6 +37,7 @@
             this.labelTime = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
             this.checkBoxCurrency = new System.Windows.Forms.CheckBox();
+            this.checkBoxEVHF = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLen)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,9 +94,9 @@
             // 
             // labelCount
             // 
-            this.labelCount.Location = new System.Drawing.Point(261, 57);
+            this.labelCount.Location = new System.Drawing.Point(261, 82);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(91, 164);
+            this.labelCount.Size = new System.Drawing.Size(91, 138);
             this.labelCount.TabIndex = 6;
             this.labelCount.Text = "Process...";
             // 
@@ -111,11 +112,24 @@
             this.checkBoxCurrency.Text = "Məbləğ";
             this.checkBoxCurrency.UseVisualStyleBackColor = true;
             // 
+            // checkBoxEVHF
+            // 
+            this.checkBoxEVHF.AutoSize = true;
+            this.checkBoxEVHF.Checked = true;
+            this.checkBoxEVHF.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxEVHF.Location = new System.Drawing.Point(266, 60);
+            this.checkBoxEVHF.Name = "checkBoxEVHF";
+            this.checkBoxEVHF.Size = new System.Drawing.Size(54, 17);
+            this.checkBoxEVHF.TabIndex = 8;
+            this.checkBoxEVHF.Text = "EVHF";
+            this.checkBoxEVHF.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 297);
+            this.ClientSize = new System.Drawing.Size(564, 298);
+            this.Controls.Add(this.checkBoxEVHF);
             this.Controls.Add(this.checkBoxCurrency);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelTime);
@@ -146,6 +160,7 @@
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.CheckBox checkBoxCurrency;
+        private System.Windows.Forms.CheckBox checkBoxEVHF;
     }
 }
 

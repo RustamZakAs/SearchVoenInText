@@ -20,6 +20,8 @@ namespace SearchVoenInText
             numericUpDownLen.Value = 10;
         }
 
+        
+
         private void button1_Click(object sender, EventArgs e)
         {
             DateTime startTime = DateTime.Now;
@@ -29,10 +31,48 @@ namespace SearchVoenInText
             progressBar.Value = 0;
             StringBuilder sbInfo = new StringBuilder(strNumLen);
             bool isVoenFind = false;
+            bool isEVHFsr   = false;
+            bool isEVHFno   = false;
             bool isCurrency = false;
             for (int i = 0; i < str.Length; i++)
             {
-                if (!isVoenFind)
+                if (checkBoxEVHF.Checked && !isEVHFsr)
+                {
+                    if (IsUpperLetter((char)str[i]))
+                    {
+                        sbInfo.Append((char)str[i]);
+                    }
+                    else if (sbInfo.Length == 2 && sbInfo.ToString() != "DV" && (char)str[i] == ' ')
+                    {
+                        rtbInfo.Text += sbInfo.ToString() + "|";
+                        isEVHFsr = true;
+
+                        Clear(sbInfo);
+                    }
+                    else if (sbInfo.Length > 0/* && sbInfo.Length*/)
+                    {
+                        Clear(sbInfo);
+                    }
+                }
+                if (checkBoxEVHF.Checked && !isEVHFno && isEVHFsr)
+                {
+                    if (Char.IsNumber((char)str[i]))
+                    {
+                        sbInfo.Append((char)str[i]);
+                    }
+                    else if (sbInfo.Length == 6)
+                    {
+                        rtbInfo.Text += sbInfo.ToString() + "|";
+                        isEVHFno = true;
+
+                        Clear(sbInfo);
+                    }
+                    else if (sbInfo.Length > 0/* && sbInfo.Length*/)
+                    {
+                        Clear(sbInfo);
+                    }
+                }
+                if (!isVoenFind && isEVHFno && isEVHFsr)
                 {
                     if (Char.IsNumber((char)str[i]))
                     {
@@ -50,7 +90,7 @@ namespace SearchVoenInText
                         Clear(sbInfo);
                     }
                 }
-                if (checkBoxCurrency.Checked && isVoenFind)
+                if (checkBoxCurrency.Checked && isVoenFind && isEVHFsr && isEVHFsr)
                 {
                     if (Char.IsNumber((char)str[i]) || str[i] == '.')
                     {
@@ -59,9 +99,11 @@ namespace SearchVoenInText
                     }
                     else if ((char)str[i] == ' ' && isCurrency)
                     {
-                        rtbInfo.Text += sbInfo.ToString() + "|\n";
+                        rtbInfo.Text += sbInfo.ToString() + "\n";
 
                         isVoenFind = false;
+                        isEVHFsr   = false;
+                        isEVHFno   = false;
                         isCurrency = false;
 
                         Clear(sbInfo);
@@ -84,6 +126,17 @@ namespace SearchVoenInText
             //if (Char.IsNumber(c))
             if (Char.IsNumber(input))
                 return true;
+            return false;
+        }
+
+        static bool IsUpperLetter(char xchar)
+        {
+            string UpperLetter = "QWERTYUIOPASDFGHJKLZXCVBNM";
+            for (int i = 0; i < UpperLetter.Length; i++)
+            {
+                if (UpperLetter[i] == xchar)
+                    return true;
+            }
             return false;
         }
 
