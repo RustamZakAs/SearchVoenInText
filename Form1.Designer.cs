@@ -42,6 +42,7 @@
             // 
             // rtbText
             // 
+            this.rtbText.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.rtbText.Location = new System.Drawing.Point(-1, -1);
             this.rtbText.Name = "rtbText";
             this.rtbText.Size = new System.Drawing.Size(258, 289);

@@ -22,6 +22,15 @@ namespace SearchVoenInText
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(rtbText.Text.Length == 0)
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.CheckFileExists)
+                {
+
+                }
+            }
+
             DateTime startTime = DateTime.Now;
             int strNumLen = Convert.ToInt32(numericUpDownLen.Value);
             progressBar.Minimum = 0;
