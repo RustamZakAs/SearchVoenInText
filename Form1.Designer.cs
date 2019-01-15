@@ -36,13 +36,11 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.labelTime = new System.Windows.Forms.Label();
             this.labelCount = new System.Windows.Forms.Label();
-            this.checkBoxCurrency = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLen)).BeginInit();
             this.SuspendLayout();
             // 
             // rtbText
             // 
-            this.rtbText.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.rtbText.Location = new System.Drawing.Point(-1, -1);
             this.rtbText.Name = "rtbText";
             this.rtbText.Size = new System.Drawing.Size(258, 289);
@@ -52,9 +50,9 @@
             // 
             // rtbInfo
             // 
-            this.rtbInfo.Location = new System.Drawing.Point(356, -2);
+            this.rtbInfo.Location = new System.Drawing.Point(336, -2);
             this.rtbInfo.Name = "rtbInfo";
-            this.rtbInfo.Size = new System.Drawing.Size(209, 289);
+            this.rtbInfo.Size = new System.Drawing.Size(229, 289);
             this.rtbInfo.TabIndex = 1;
             this.rtbInfo.Text = "";
             // 
@@ -70,9 +68,9 @@
             // 
             // numericUpDownLen
             // 
-            this.numericUpDownLen.Location = new System.Drawing.Point(262, 12);
+            this.numericUpDownLen.Location = new System.Drawing.Point(263, 12);
             this.numericUpDownLen.Name = "numericUpDownLen";
-            this.numericUpDownLen.Size = new System.Drawing.Size(88, 20);
+            this.numericUpDownLen.Size = new System.Drawing.Size(67, 20);
             this.numericUpDownLen.TabIndex = 3;
             // 
             // progressBar
@@ -86,7 +84,7 @@
             // labelTime
             // 
             this.labelTime.AutoSize = true;
-            this.labelTime.Location = new System.Drawing.Point(272, 225);
+            this.labelTime.Location = new System.Drawing.Point(272, 221);
             this.labelTime.Name = "labelTime";
             this.labelTime.Size = new System.Drawing.Size(49, 13);
             this.labelTime.TabIndex = 5;
@@ -94,30 +92,17 @@
             // 
             // labelCount
             // 
-            this.labelCount.Location = new System.Drawing.Point(261, 57);
+            this.labelCount.Location = new System.Drawing.Point(259, 138);
             this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(91, 164);
+            this.labelCount.Size = new System.Drawing.Size(71, 48);
             this.labelCount.TabIndex = 6;
             this.labelCount.Text = "Process...";
-            // 
-            // checkBoxCurrency
-            // 
-            this.checkBoxCurrency.AutoSize = true;
-            this.checkBoxCurrency.Checked = true;
-            this.checkBoxCurrency.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxCurrency.Location = new System.Drawing.Point(265, 37);
-            this.checkBoxCurrency.Name = "checkBoxCurrency";
-            this.checkBoxCurrency.Size = new System.Drawing.Size(61, 17);
-            this.checkBoxCurrency.TabIndex = 7;
-            this.checkBoxCurrency.Text = "Məbləğ";
-            this.checkBoxCurrency.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 297);
-            this.Controls.Add(this.checkBoxCurrency);
+            this.ClientSize = new System.Drawing.Size(564, 298);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.labelTime);
             this.Controls.Add(this.progressBar);
@@ -127,6 +112,7 @@
             this.Controls.Add(this.rtbText);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.MaximumSize = new System.Drawing.Size(580, 336);
             this.MinimumSize = new System.Drawing.Size(580, 336);
             this.Name = "Form1";
@@ -146,7 +132,6 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Label labelTime;
         private System.Windows.Forms.Label labelCount;
-        private System.Windows.Forms.CheckBox checkBoxCurrency;
     }
 }
 
